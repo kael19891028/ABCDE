@@ -1,0 +1,720 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="test">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="i" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="testResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="testResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ToolingTimes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BillCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ToolingCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Times" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ToolingTimesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ToolingTimesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BillState">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BillCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="OverTotal" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="OverTime" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="State" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BillStateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BillStateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LineInventory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="WorkLineCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BillCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BarCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LineInventoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LineInventoryResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AnDonStart">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CallTypeCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Remark" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="WorkLineCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="WorkStationCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AnDonStartResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AnDonStartResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AnDonList">
+        <s:complexType />
+      </s:element>
+      <s:element name="AnDonListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AnDonListResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AnDonOver">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AnDonCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HandleUser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HandleRemark" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="HandleTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AnDonOverResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AnDonOverResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DocAdd">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DocTypeCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocXml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DocAddResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DocAddResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="testSoapIn">
+    <wsdl:part name="parameters" element="tns:test" />
+  </wsdl:message>
+  <wsdl:message name="testSoapOut">
+    <wsdl:part name="parameters" element="tns:testResponse" />
+  </wsdl:message>
+  <wsdl:message name="ToolingTimesSoapIn">
+    <wsdl:part name="parameters" element="tns:ToolingTimes" />
+  </wsdl:message>
+  <wsdl:message name="ToolingTimesSoapOut">
+    <wsdl:part name="parameters" element="tns:ToolingTimesResponse" />
+  </wsdl:message>
+  <wsdl:message name="BillStateSoapIn">
+    <wsdl:part name="parameters" element="tns:BillState" />
+  </wsdl:message>
+  <wsdl:message name="BillStateSoapOut">
+    <wsdl:part name="parameters" element="tns:BillStateResponse" />
+  </wsdl:message>
+  <wsdl:message name="LineInventorySoapIn">
+    <wsdl:part name="parameters" element="tns:LineInventory" />
+  </wsdl:message>
+  <wsdl:message name="LineInventorySoapOut">
+    <wsdl:part name="parameters" element="tns:LineInventoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="AnDonStartSoapIn">
+    <wsdl:part name="parameters" element="tns:AnDonStart" />
+  </wsdl:message>
+  <wsdl:message name="AnDonStartSoapOut">
+    <wsdl:part name="parameters" element="tns:AnDonStartResponse" />
+  </wsdl:message>
+  <wsdl:message name="AnDonListSoapIn">
+    <wsdl:part name="parameters" element="tns:AnDonList" />
+  </wsdl:message>
+  <wsdl:message name="AnDonListSoapOut">
+    <wsdl:part name="parameters" element="tns:AnDonListResponse" />
+  </wsdl:message>
+  <wsdl:message name="AnDonOverSoapIn">
+    <wsdl:part name="parameters" element="tns:AnDonOver" />
+  </wsdl:message>
+  <wsdl:message name="AnDonOverSoapOut">
+    <wsdl:part name="parameters" element="tns:AnDonOverResponse" />
+  </wsdl:message>
+  <wsdl:message name="DocAddSoapIn">
+    <wsdl:part name="parameters" element="tns:DocAdd" />
+  </wsdl:message>
+  <wsdl:message name="DocAddSoapOut">
+    <wsdl:part name="parameters" element="tns:DocAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="testHttpGetIn">
+    <wsdl:part name="i" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="testHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ToolingTimesHttpGetIn">
+    <wsdl:part name="BillCode" type="s:string" />
+    <wsdl:part name="ToolingCode" type="s:string" />
+    <wsdl:part name="Times" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ToolingTimesHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="BillStateHttpGetIn">
+    <wsdl:part name="BillCode" type="s:string" />
+    <wsdl:part name="OverTotal" type="s:string" />
+    <wsdl:part name="OverTime" type="s:string" />
+    <wsdl:part name="State" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="BillStateHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="LineInventoryHttpGetIn">
+    <wsdl:part name="WorkLineCode" type="s:string" />
+    <wsdl:part name="BillCode" type="s:string" />
+    <wsdl:part name="BarCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LineInventoryHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AnDonStartHttpGetIn">
+    <wsdl:part name="CallTypeCode" type="s:string" />
+    <wsdl:part name="Remark" type="s:string" />
+    <wsdl:part name="WorkLineCode" type="s:string" />
+    <wsdl:part name="WorkStationCode" type="s:string" />
+    <wsdl:part name="UserCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AnDonStartHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AnDonListHttpGetIn" />
+  <wsdl:message name="AnDonListHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AnDonOverHttpGetIn">
+    <wsdl:part name="AnDonCode" type="s:string" />
+    <wsdl:part name="HandleUser" type="s:string" />
+    <wsdl:part name="HandleRemark" type="s:string" />
+    <wsdl:part name="HandleTime" type="s:string" />
+    <wsdl:part name="State" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AnDonOverHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DocAddHttpGetIn">
+    <wsdl:part name="DocTypeCode" type="s:string" />
+    <wsdl:part name="DocXml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DocAddHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="testHttpPostIn">
+    <wsdl:part name="i" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="testHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ToolingTimesHttpPostIn">
+    <wsdl:part name="BillCode" type="s:string" />
+    <wsdl:part name="ToolingCode" type="s:string" />
+    <wsdl:part name="Times" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ToolingTimesHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="BillStateHttpPostIn">
+    <wsdl:part name="BillCode" type="s:string" />
+    <wsdl:part name="OverTotal" type="s:string" />
+    <wsdl:part name="OverTime" type="s:string" />
+    <wsdl:part name="State" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="BillStateHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="LineInventoryHttpPostIn">
+    <wsdl:part name="WorkLineCode" type="s:string" />
+    <wsdl:part name="BillCode" type="s:string" />
+    <wsdl:part name="BarCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="LineInventoryHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AnDonStartHttpPostIn">
+    <wsdl:part name="CallTypeCode" type="s:string" />
+    <wsdl:part name="Remark" type="s:string" />
+    <wsdl:part name="WorkLineCode" type="s:string" />
+    <wsdl:part name="WorkStationCode" type="s:string" />
+    <wsdl:part name="UserCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AnDonStartHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AnDonListHttpPostIn" />
+  <wsdl:message name="AnDonListHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AnDonOverHttpPostIn">
+    <wsdl:part name="AnDonCode" type="s:string" />
+    <wsdl:part name="HandleUser" type="s:string" />
+    <wsdl:part name="HandleRemark" type="s:string" />
+    <wsdl:part name="HandleTime" type="s:string" />
+    <wsdl:part name="State" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AnDonOverHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="DocAddHttpPostIn">
+    <wsdl:part name="DocTypeCode" type="s:string" />
+    <wsdl:part name="DocXml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DocAddHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="JHServiceSoap">
+    <wsdl:operation name="test">
+      <wsdl:input message="tns:testSoapIn" />
+      <wsdl:output message="tns:testSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ToolingTimes">
+      <wsdl:input message="tns:ToolingTimesSoapIn" />
+      <wsdl:output message="tns:ToolingTimesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BillState">
+      <wsdl:input message="tns:BillStateSoapIn" />
+      <wsdl:output message="tns:BillStateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LineInventory">
+      <wsdl:input message="tns:LineInventorySoapIn" />
+      <wsdl:output message="tns:LineInventorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AnDonStart">
+      <wsdl:input message="tns:AnDonStartSoapIn" />
+      <wsdl:output message="tns:AnDonStartSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AnDonList">
+      <wsdl:input message="tns:AnDonListSoapIn" />
+      <wsdl:output message="tns:AnDonListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AnDonOver">
+      <wsdl:input message="tns:AnDonOverSoapIn" />
+      <wsdl:output message="tns:AnDonOverSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DocAdd">
+      <wsdl:input message="tns:DocAddSoapIn" />
+      <wsdl:output message="tns:DocAddSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="JHServiceHttpGet">
+    <wsdl:operation name="test">
+      <wsdl:input message="tns:testHttpGetIn" />
+      <wsdl:output message="tns:testHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ToolingTimes">
+      <wsdl:input message="tns:ToolingTimesHttpGetIn" />
+      <wsdl:output message="tns:ToolingTimesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BillState">
+      <wsdl:input message="tns:BillStateHttpGetIn" />
+      <wsdl:output message="tns:BillStateHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LineInventory">
+      <wsdl:input message="tns:LineInventoryHttpGetIn" />
+      <wsdl:output message="tns:LineInventoryHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AnDonStart">
+      <wsdl:input message="tns:AnDonStartHttpGetIn" />
+      <wsdl:output message="tns:AnDonStartHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AnDonList">
+      <wsdl:input message="tns:AnDonListHttpGetIn" />
+      <wsdl:output message="tns:AnDonListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AnDonOver">
+      <wsdl:input message="tns:AnDonOverHttpGetIn" />
+      <wsdl:output message="tns:AnDonOverHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DocAdd">
+      <wsdl:input message="tns:DocAddHttpGetIn" />
+      <wsdl:output message="tns:DocAddHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="JHServiceHttpPost">
+    <wsdl:operation name="test">
+      <wsdl:input message="tns:testHttpPostIn" />
+      <wsdl:output message="tns:testHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ToolingTimes">
+      <wsdl:input message="tns:ToolingTimesHttpPostIn" />
+      <wsdl:output message="tns:ToolingTimesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BillState">
+      <wsdl:input message="tns:BillStateHttpPostIn" />
+      <wsdl:output message="tns:BillStateHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LineInventory">
+      <wsdl:input message="tns:LineInventoryHttpPostIn" />
+      <wsdl:output message="tns:LineInventoryHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AnDonStart">
+      <wsdl:input message="tns:AnDonStartHttpPostIn" />
+      <wsdl:output message="tns:AnDonStartHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AnDonList">
+      <wsdl:input message="tns:AnDonListHttpPostIn" />
+      <wsdl:output message="tns:AnDonListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AnDonOver">
+      <wsdl:input message="tns:AnDonOverHttpPostIn" />
+      <wsdl:output message="tns:AnDonOverHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DocAdd">
+      <wsdl:input message="tns:DocAddHttpPostIn" />
+      <wsdl:output message="tns:DocAddHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="JHServiceSoap" type="tns:JHServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="test">
+      <soap:operation soapAction="http://tempuri.org/test" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ToolingTimes">
+      <soap:operation soapAction="http://tempuri.org/ToolingTimes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BillState">
+      <soap:operation soapAction="http://tempuri.org/BillState" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LineInventory">
+      <soap:operation soapAction="http://tempuri.org/LineInventory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnDonStart">
+      <soap:operation soapAction="http://tempuri.org/AnDonStart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnDonList">
+      <soap:operation soapAction="http://tempuri.org/AnDonList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnDonOver">
+      <soap:operation soapAction="http://tempuri.org/AnDonOver" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DocAdd">
+      <soap:operation soapAction="http://tempuri.org/DocAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="JHServiceSoap12" type="tns:JHServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="test">
+      <soap12:operation soapAction="http://tempuri.org/test" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ToolingTimes">
+      <soap12:operation soapAction="http://tempuri.org/ToolingTimes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BillState">
+      <soap12:operation soapAction="http://tempuri.org/BillState" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LineInventory">
+      <soap12:operation soapAction="http://tempuri.org/LineInventory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnDonStart">
+      <soap12:operation soapAction="http://tempuri.org/AnDonStart" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnDonList">
+      <soap12:operation soapAction="http://tempuri.org/AnDonList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnDonOver">
+      <soap12:operation soapAction="http://tempuri.org/AnDonOver" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DocAdd">
+      <soap12:operation soapAction="http://tempuri.org/DocAdd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="JHServiceHttpGet" type="tns:JHServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="test">
+      <http:operation location="/test" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ToolingTimes">
+      <http:operation location="/ToolingTimes" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BillState">
+      <http:operation location="/BillState" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LineInventory">
+      <http:operation location="/LineInventory" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnDonStart">
+      <http:operation location="/AnDonStart" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnDonList">
+      <http:operation location="/AnDonList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnDonOver">
+      <http:operation location="/AnDonOver" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DocAdd">
+      <http:operation location="/DocAdd" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="JHServiceHttpPost" type="tns:JHServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="test">
+      <http:operation location="/test" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ToolingTimes">
+      <http:operation location="/ToolingTimes" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BillState">
+      <http:operation location="/BillState" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LineInventory">
+      <http:operation location="/LineInventory" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnDonStart">
+      <http:operation location="/AnDonStart" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnDonList">
+      <http:operation location="/AnDonList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnDonOver">
+      <http:operation location="/AnDonOver" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DocAdd">
+      <http:operation location="/DocAdd" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="JHService">
+    <wsdl:port name="JHServiceSoap" binding="tns:JHServiceSoap">
+      <soap:address location="http://10.1.1.13:8001/JHService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="JHServiceSoap12" binding="tns:JHServiceSoap12">
+      <soap12:address location="http://10.1.1.13:8001/JHService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="JHServiceHttpGet" binding="tns:JHServiceHttpGet">
+      <http:address location="http://10.1.1.13:8001/JHService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="JHServiceHttpPost" binding="tns:JHServiceHttpPost">
+      <http:address location="http://10.1.1.13:8001/JHService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,30 @@
+-- sp_addlinkedserver
+--EXEC sp_addlinkedserver
+--	@server = 'CC01',
+--	@srvproduct = '',
+--	@provider = 'SQLOLEDB',
+--	@datasrc = '10.1.1.13'
+	
+-- sp_addlinkedsrvlogin
+--EXEC sp_addlinkedsrvlogin
+--	@rmtsrvname = 'CC01',
+--	@useself = 'FALSE',
+--	@locallogin = NULL,
+--	@rmtuser = 'sa',
+--	@rmtpassword = 'microsoft'
+	
+-- sp_droplinkedsrvlogin 
+--EXEC sp_droplinkedsrvlogin 
+--	 @rmtsrvname = 'CC01',
+--	 @locallogin = NULL
+	 
+-- sp_dropserver 
+--EXEC sp_dropserver 
+--	 @server = 'CC01',
+--	 @droplogins = 'droplogins'
+
+
+
+EXEC sp_addlinkedserver @server = ${SERVER}, @srvproduct = '', @provider = 'SQLOLEDB', @datasrc = ${SERVER_ADDR}
+
+EXEC sp_addlinkedsrvlogin @rmtsrvname = ${SERVER}, @useself = 'FALSE', @locallogin = NULL, @rmtuser = ${SERVER_USER}, @rmtpassword = ${SERVER_PASS}

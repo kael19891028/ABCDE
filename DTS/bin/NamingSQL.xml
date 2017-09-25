@@ -1,0 +1,13 @@
+<NamingSQL>
+<sql name="SelectComb">SELECT [id],[theme_id],[from],[time] FROM comb</sql>
+<sql name="SelectTheme">SELECT [id],[name],[diff],[time],[pages],[version],[gift],[flashTheme],[type],[color],[new_type],[gallery_type] FROM theme</sql>
+<sql name="SelectGift">SELECT [id],[type],[showId],[name] FROM gift</sql>
+<sql name="SelectCard">SELECT [id],[theme_id],[name],[price],[version],[itemno],[bflash] FROM card</sql>
+<sql name="SelectQQHome">SELECT [theme_id],[type],[latest_ts],[early_ts],[cnt],[qqshow_str] FROM qqhome</sql>
+<sql name="InsertTheme">INSERT INTO [Test].[dbo].[theme] ([id],[name],[diff],[time],[pages],[version],[gift],[flashTheme],[type],[color],[new_type],[gallery_type]) VALUES (:id,:name,:diff,:time,:pages,:version,:gift,:flashTheme,:type,:color,:new_type,:gallery_type)</sql>
+<sql name="InsertGift">INSERT INTO [Test].[dbo].[gift] ([id],[type],[showId],[name]) VALUES (:id,:type,:showId,:name)</sql>
+<sql name="InsertCard">INSERT INTO [Test].[dbo].[card] ([id],[theme_id],[name],[price],[version],[itemno],[bflash])VALUES(:id,:theme_id,:name,:price,:version,:itemno,:bflash)</sql>
+<sql name="InsertComb">INSERT INTO [Test].[dbo].[comb] ([id],[theme_id],[from],[time]) VALUES (:id,:theme_id,:from,:time)</sql>
+<sql name="InsertQQHome">INSERT INTO [Test].[dbo].[qqhome] ([theme_id],[type],[latest_ts],[early_ts],[cnt],[qqshow_str]) VALUES (:theme_id,:type,:latest_ts,:early_ts,:cnt,:qqshow_str)</sql>
+<sql name="ModifyMyCollect">UPDATE [Test].[dbo].[qqhome] SET [latest_ts]=:latest_ts, [cnt]=:cnt, [qqshow_str]=:qqshow_str WHERE theme_id=:theme_id</sql>
+</NamingSQL>

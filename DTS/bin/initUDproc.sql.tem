@@ -1,0 +1,48 @@
+USE ${DB_NAME}
+GO
+
+IF EXISTS (SELECT * FROM sysobjects WHERE id = object_id('${PROC_NAME}') AND OBJECTPROPERTY(id, 'IsProcedure') = 1)  
+BEGIN
+	DROP PROCEDURE ${SPACE_NAME}.${PROC_NAME};
+END
+GO
+
+CREATE PROCEDURE ${SPACE_NAME}.${PROC_NAME}
+AS
+DECLARE @last DATETIME
+DECLARE @curr DATETIME
+DECLARE @erro INT
+BEGIN TRANSACTION
+	SELECT [RecodeLastTime]=@last FROM ${DB_NAME}.${SPACE_NAME}.${TABLE_NAME} WHERE [UploadTable] = '${TABLE_NAME}';
+	SET @curr = CURRENT_TIMESTAMP;
+	SET @erro = 0
+	
+	IF @last IS NULL
+	BEGIN
+		INSERT INTO ${SERVER_NAME}.${DB_NAME}.${SPACE_NAME}.[${TABLE_NAME}] SELECT * FROM ${DB_NAME}.${SPACE_NAME}.[${TABLE_NAME}] A WHERE A.[FinishTime] >= @last AND A.[FinishTime] < @curr;
+		SET @erro += @@ERROR
+			
+		INSERT INTO ${DB_NAME}.${SPACE_NAME}.${TABLE_NAME}([UploadTable], [RecodeLastTime]) VALUES('${TABLE_NAME}', @curr);
+		SET @erro += @@ERROR
+	END
+	ELSE
+	BEGIN
+		INSERT INTO ${SERVER_NAME}.${DB_NAME}.${SPACE_NAME}.[${TABLE_NAME}] SELECT * FROM ${DB_NAME}.${SPACE_NAME}.[${TABLE_NAME}] A WHERE A.[FinishTime] >= @last AND A.[FinishTime] < @curr;
+		SET @erro += @@ERROR
+			
+		UPDATE ${DB_NAME}.${SPACE_NAME}.${TABLE_NAME} SET [RecodeLastTime] = @curr WHERE [UploadTable] = '${TABLE_NAME}';
+		SET @erro += @@ERROR
+	END
+	
+	IF @erro <> 0
+	BEGIN
+		ROLLBACK TRANSACTION
+		RETURN 1
+	END
+	ELSE
+	BEGIN
+		COMMIT TRANSACTION
+		RETURN 0
+	END
+
+GO

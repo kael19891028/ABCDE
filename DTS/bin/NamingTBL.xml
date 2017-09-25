@@ -1,0 +1,7 @@
+<NamingSQL>
+<table>
+<name>PCS_Data_Assembly</name>
+<operate>upload_PCS_Data_Assembly</operate>
+<type>0</type>
+</table>
+</NamingSQL>
